@@ -1,6 +1,5 @@
 package com.joao.banco;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class PessoaFisica extends Pessoa {
@@ -8,9 +7,15 @@ public class PessoaFisica extends Pessoa {
     private String cpfPessoa;
     private String rgPessoa;
     private int idadePessoa;
-    ArrayList<Pessoa> pf = new ArrayList<>();
 
     public PessoaFisica() {
+    }
+
+    public PessoaFisica(String nomePessoa, String enderecoPessoa, long cepPessoa, String telefonePessoa, double rendaPessoa, String cpfPessoa, String rgPessoa, int idadePessoa) {
+        super(nomePessoa, enderecoPessoa, cepPessoa, telefonePessoa, rendaPessoa);
+        this.cpfPessoa = cpfPessoa;
+        this.rgPessoa = rgPessoa;
+        this.idadePessoa = idadePessoa;
     }
 
     public String getCpfPessoa() {
@@ -35,15 +40,6 @@ public class PessoaFisica extends Pessoa {
 
     public void setIdadePessoa(int idadePessoa) {
         this.idadePessoa = idadePessoa;
-    }
-
-    public int registrarPessoa(PessoaFisica pessoaF){
-
-        if (pessoaF.validadorCpf(getCpfPessoa())){
-            pf.add(pessoaF);
-            return 1;
-        }
-        return 0;
     }
 
     public boolean validadorCpf(String cpf){
@@ -105,22 +101,4 @@ public class PessoaFisica extends Pessoa {
 
     }
 
-    public String consultarCpf(String cpf){
-
-        if (getCpfPessoa() != null && getCpfPessoa() != " "){
-            pf.contains(cpf);
-            return "Número de Cpf válido pertence á :  " + getNomePessoa() ;
-        }
-
-        return "Número de Cpf não encontrado.";
-    }
-
-    @Override
-    public String toString() {
-        return "PessoaFisica[" + "\n" +
-                "cpfPessoa: " + cpfPessoa + "\n" +
-                "rgPessoa: " + rgPessoa + "\n" +
-                "idadePessoa: " + idadePessoa + "\n" +
-                super.toString();
-    }
 }

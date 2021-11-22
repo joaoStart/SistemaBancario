@@ -1,6 +1,6 @@
 package com.joao.banco;
 
-public class Pessoa {
+public abstract class Pessoa {
 
     protected String nomePessoa;
     protected String enderecoPessoa;
@@ -10,6 +10,16 @@ public class Pessoa {
     protected int situacaoPessoa = 1;
 
     public Pessoa() {
+
+    }
+
+    public Pessoa(String nomePessoa, String enderecoPessoa, long cepPessoa,
+                  String telefonePessoa, double rendaPessoa) {
+        this.nomePessoa = nomePessoa;
+        this.enderecoPessoa = enderecoPessoa;
+        this.cepPessoa = cepPessoa;
+        this.telefonePessoa = telefonePessoa;
+        this.rendaPessoa = rendaPessoa;
     }
 
     public String getNomePessoa() {
@@ -52,13 +62,10 @@ public class Pessoa {
         this.rendaPessoa = rendaPessoa;
     }
 
-    @Override
-    public String toString() {
-        return "nomePessoa: " + nomePessoa + "\n" +
-                "enderecoPessoa: " + enderecoPessoa + "\n" +
-                "cepPessoa: " + cepPessoa + "\n" +
-                "telefonePessoa: " + telefonePessoa + "\n" +
-                "rendaPessoa: " + rendaPessoa +
-                ']';
+    public int getSituacaoPessoa() {
+        return situacaoPessoa;
+    }
+    public void setSituacaoPessoa(int situacaoPessoa) {
+        this.situacaoPessoa = situacaoPessoa;
     }
 }
