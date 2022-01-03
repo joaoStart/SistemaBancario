@@ -1,8 +1,6 @@
 package com.joao.dao;
 
-import com.joao.banco.Pessoa;
 import com.joao.banco.PessoaFisica;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +18,7 @@ class PessoaFisicaDAOTest {
 
         pf.setNomePessoa("Thayna Carla Monteiro Ferreira");
         pf.setEnderecoPessoa("Av.123");
-        pf.setCepPessoa(54730-000);
+        pf.setCepPessoa(54730_000);
         pf.setRendaPessoa(1500);
         pf.setTelefonePessoa("(81)9.9999-0987");
 
@@ -36,13 +34,19 @@ class PessoaFisicaDAOTest {
     }
 
     @Test
-    void consultarPf(){
-        PessoaFisicaDAO pfDao1 = new PessoaFisicaDAO();
-        PessoaFisica pf1 = pfDao1.consultarPf("08692524459");
+    void consultarPfSucesso(){
+        PessoaFisicaDAO pfDao = new PessoaFisicaDAO();
+        PessoaFisica pf = pfDao.consultarPf("08692524450");
 
-        System.out.println("Nome: " + pf1.getNomePessoa());
-        System.out.println("Endereço: " + pf1.getEnderecoPessoa());
-        System.out.println("CPF: "+ pf1.getCpfPessoa());
+        assertNotNull(pf.getCpfPessoa());
+
+        System.out.println("Nome: " + pf.getNomePessoa());
+        System.out.println("Endereço: " + pf.getEnderecoPessoa());
+        System.out.println("CPF: "+ pf.getCpfPessoa());
+    }
+
+    @Test
+    void consultarPFFail(){
 
 
     }

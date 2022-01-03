@@ -70,12 +70,13 @@ public class PessoaFisicaDAO {
         PreparedStatement stmt = null;
         ResultSet           rs = null;
 
+        PessoaFisica pessoaFisica = new PessoaFisica();
+
         try {
             stmt = con.prepareStatement(sqlConsulta);
             stmt.setString(1,cpf);
             rs = stmt.executeQuery();
 
-            PessoaFisica pessoaFisica = new PessoaFisica();
             while (rs.next()){
                 pessoaFisica.setNomePessoa(rs.getString("nome"));
                 pessoaFisica.setEnderecoPessoa(rs.getString("endereco"));
@@ -85,9 +86,8 @@ public class PessoaFisicaDAO {
             }
 
             return pessoaFisica;
-
         } catch (SQLException e) {
-            e.printStackTrace();
+                e.printStackTrace();
             return null;
 
         }finally {
